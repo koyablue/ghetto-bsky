@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@atproto/api": "^0.12.7",
+    "@atproto/api": "^0.9.5",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18"
