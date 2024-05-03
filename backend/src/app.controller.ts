@@ -9,9 +9,4 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
-
-  @Get('timeline')
-  async getTimeline() {
-    return await this.appService.getTimeline();
-  }
 }
