@@ -13,8 +13,6 @@ export const getTimeline = async (limit: number, cursor: string) => {
     return;
   }
 
-  console.log('cursor:', cursor);
-
   const appFeedViewPosts = feed as AppFeedViewPost[];
 
   return { feed: appFeedViewPosts, cursor: newCursor };
