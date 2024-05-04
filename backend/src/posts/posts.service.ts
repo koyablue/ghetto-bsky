@@ -1,15 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { BskyAgent } from '@atproto/api';
 import { DEFAULT_TIMELINE_LIMIT } from 'src/common/constants';
 import { AtProtoService } from '../at-proto/at-proto.service';
 
 @Injectable()
 export class PostsService {
-  private agent: BskyAgent;
-
-  constructor(private readonly atProtoService: AtProtoService) {
-    this.agent = this.atProtoService.getAgent();
-  }
+  constructor(private readonly atProtoService: AtProtoService) {}
 
   // create(createPostDto: CreatePostDto) {
   //   return 'This action adds a new post';

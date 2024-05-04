@@ -25,11 +25,6 @@ export class AtProtoService {
     });
   }
 
-  // TODO: Remove?
-  getAgent() {
-    return this.agent;
-  }
-
   async login(identifier: string, password: string) {
     try {
       // If already logged in, resume session
