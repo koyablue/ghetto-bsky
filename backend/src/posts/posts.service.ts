@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { CreatePostDto } from './dto/create-post.dto';
 import { DEFAULT_TIMELINE_LIMIT } from 'src/common/constants';
 import { AtProtoService } from '../at-proto/at-proto.service';
 
@@ -6,13 +7,13 @@ import { AtProtoService } from '../at-proto/at-proto.service';
 export class PostsService {
   constructor(private readonly atProtoService: AtProtoService) {}
 
-  // create(createPostDto: CreatePostDto) {
-  //   return 'This action adds a new post';
-  // }
+  async create(createPostDto: CreatePostDto) {
+    const { text, createdAt } = createPostDto;
+    return await this.atProtoService.createPost(text, createdAt);
+  }
 
-  async findAll(limit = DEFAULT_TIMELINE_LIMIT, cursor = '') {
+  async getTimeline(limit = DEFAULT_TIMELINE_LIMIT, cursor = '') {
     return await this.atProtoService.getTimeline(limit, cursor);
-    // return await getTimeline(this.agent, limit, cursor);
   }
 
   findOne(id: number) {

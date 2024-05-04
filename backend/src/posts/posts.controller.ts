@@ -1,32 +1,23 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  Query,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Query } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
-import { UpdatePostDto } from './dto/update-post.dto';
+// import { UpdatePostDto } from './dto/update-post.dto';
 import { GetTimelineDto } from './dto/get-timeline.dto';
 
 @Controller('posts')
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
-  // @Post()
-  // create(@Body() createPostDto: CreatePostDto) {
-  //   return this.postsService.create(createPostDto);
-  // }
+  @Post()
+  create(@Body() createPostDto: CreatePostDto) {
+    return this.postsService.create(createPostDto);
+  }
 
   // TODO: query param (limit: number, cursor: ISO string)
   @Get('/timeline')
   async findAll(@Query() params: GetTimelineDto) {
     const { limit, cursor } = params;
-    return this.postsService.findAll(limit, cursor);
+    return this.postsService.getTimeline(limit, cursor);
   }
 
   // @Get(':id')

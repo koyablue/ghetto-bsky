@@ -70,4 +70,17 @@ export class AtProtoService {
 
     return { feed: appFeedViewPosts, cursor: newCursor };
   }
+
+  // TODO: images
+  // TODO: mention
+  // TODO: quoted
+  // TODO: link
+  // TODO: tags
+  async createPost(text: string, createdAt: string) {
+    try {
+      return await this.agent.post({ text, createdAt });
+    } catch (error) {
+      console.log('Failed to create a post', error);
+    }
+  }
 }
