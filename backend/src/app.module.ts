@@ -3,9 +3,10 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PostsModule } from './posts/posts.module';
+import { AtProtoModule } from './at-proto/at-proto.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), PostsModule],
+  imports: [ConfigModule.forRoot(), PostsModule, AtProtoModule],
   controllers: [AppController],
   providers: [AppService],
 })

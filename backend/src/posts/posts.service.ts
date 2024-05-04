@@ -1,17 +1,23 @@
 import { Injectable } from '@nestjs/common';
-import { CreatePostDto } from './dto/create-post.dto';
-import { UpdatePostDto } from './dto/update-post.dto';
-import { getTimeline } from 'src/lib/at-proto/get-timeline';
+import { BskyAgent } from '@atproto/api';
 import { DEFAULT_TIMELINE_LIMIT } from 'src/common/constants';
+import { AtProtoService } from '../at-proto/at-proto.service';
 
 @Injectable()
 export class PostsService {
+  private agent: BskyAgent;
+
+  constructor(private readonly atProtoService: AtProtoService) {
+    this.agent = this.atProtoService.getAgent();
+  }
+
   // create(createPostDto: CreatePostDto) {
   //   return 'This action adds a new post';
   // }
 
   async findAll(limit = DEFAULT_TIMELINE_LIMIT, cursor = '') {
-    return await getTimeline(limit, cursor);
+    return await this.atProtoService.getTimeline(limit, cursor);
+    // return await getTimeline(this.agent, limit, cursor);
   }
 
   findOne(id: number) {
