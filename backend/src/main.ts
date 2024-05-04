@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
-import { agent } from './lib/at-proto/init';
+// import { agent } from './lib/at-proto/init';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -13,10 +13,10 @@ async function bootstrap() {
   );
 
   // TODO: This is temporary solution
-  await agent.login({
-    identifier: 'yohjo.bsky.social',
-    password: process.env.APP_PASSWORD || '',
-  });
+  // await agent.login({
+  //   identifier: 'yohjo.bsky.social',
+  //   password: process.env.APP_PASSWORD || '',
+  // });
 
   await app.listen(4000);
 }

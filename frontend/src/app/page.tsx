@@ -7,9 +7,6 @@ export default async function Homepage() {
     identifier: "yohjo.bsky.social",
     password: process.env.APP_PASSWORD || "",
   });
-  const feeds = await agent.app.bsky.unspecced.getPopularFeedGenerators({
-    limit: 10,
-  });
 
   const { data } = await agent.getTimeline({
     cursor: "",
